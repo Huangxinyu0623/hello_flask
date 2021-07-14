@@ -1,28 +1,61 @@
+<body style="background-image: url(https://ftp.bmp.ovh/imgs/2021/07/ddc4a77253423cbf.jpg);"></body>
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Posts{% endblock %}</h1>
-  {% if g.user %}
-    <a class="action btn btn-outline-info btn-light" href="{{ url_for('blog.create') }}">New</a>
-  {% endif %}
+<h1 class="text-center text-dark font-italic"><strong> {% block title %}Lastest Posts{% endblock %}</strong></h1>
+{% if g.user %}
+<a class="action btn btn-outline-dark btn-light" href="{{ url_for('blog.create') }}">New</a>
+{% endif %}
 {% endblock %}
-
 {% block content %}
-  {% for post in posts %}
-    <article class="post">
-      <header>
-        <div>
-          <h1>{{ post['title'] }}</h1>
-          <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
-        </div>
-        {% if g.user['id'] == post['author_id'] %}
-          <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
-        {% endif %}
-      </header>
-      <p class="body">{{ post['body'] }}</p>
-    </article>
-    {% if not loop.last %}
+<div class="container bg-light">
+  <div class="row">
+    <div class="col-md-8 border border-dark">
+      <article class="post">
+        {% for post in posts %}
+        <header>
+          <div>
+            <h1><strong>Title: {{ post['title'] }}</strong></h1>
+            <div class="about ">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
+          </div>
+          {% if g.user['id'] == post['author_id'] %}
+          <a class="action text-dark" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+          {% endif %}
+        </header>
+        <p class="body">{{ post['body'] }}</p>
+      </article>
+      {% if not loop.last %}
       <hr>
-    {% endif %}
-  {% endfor %}
-{% endblock %}
+      {% endif %}
+      {% endfor %}
+    </div>
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-white text-dark rounded font-italic">
+        <h4><strong>May you have a good day!</strong></h4>
+        <p class="mb-0"> 你就像黑夜，拥有寂静和群星。</p>
+        <p></p>
+        <p class="mb-0">生活很苦，但是我们手里有糖。</p>
+        <p></p>
+        <p class="mb-0">一无所知的世界，走下去才有惊喜。</p>
+        <p></p>
+        <p class="mb-0">疲惫的生活里总要一些温柔的梦想。</p>
+        <p></p>
+        <p class="mb-0">来路无可眷恋，值得期待的只有远方。</p>
+        <p></p>
+        <p class="mb-0">如果能久别重逢，我希望你别来无恙。</p>
+        <p></p>
+        <p class="mb-0">来路无可眷恋，值得期待的只有远方。</p>
+        <p></p>
+        <p class="mb-0">人间一趟，积极向上，不念过往，不畏将来。</p>
+        <p></p>
+        <p class="mb-0">尽全力在不愉快的日子里搜刮生活藏下的所有温柔。</p>
+        <p></p>
+        <p class="mb-0">那就请再努力一点吧，为了相见的人，想得到的东西和想成为的自己。</p>
+        <p></p>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+  </div>
+  {% endblock %}
+</div>
+
+</body>
