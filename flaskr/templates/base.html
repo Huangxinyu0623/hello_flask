@@ -7,7 +7,7 @@
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!--要注意版本，不然有些属性用不了-->
 <nav class="navbar bg-dark navbar-dark">
-  <h1 class="font-italic text-light">Myblog</h1>
+  <h1 class="font-italic text-light">MyBlog--Record Every Good Moment!</h1>
   <ul class="justify-content-end">
     {% if g.user %}
     <li><span class="font-italic text-light">Hello, {{ g.user['username'] }} !</span>
@@ -27,10 +27,10 @@
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
-<nav class="col-md-12 navbar bg-dark navbar-dark">
+<nav class="col-md-12 navbar bg-dark navbar-dark fixed-bottom justify-content-center">
   <ul>
     <li>
-      <a class=" btn btn-outline-dark btn-light justify-content-end " href="/">回到首页</a>
+      <a class=" btn btn-outline-dark btn-light justify-content-end " href="/">Home</a>
     </li>
     <li>
       <a class="btn btn-light btn-outline-dark" href="https://github.com/Huangxinyu0623">MyGithub

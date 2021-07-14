@@ -1,61 +1,78 @@
-<body style="background-image: url(https://ftp.bmp.ovh/imgs/2021/07/ddc4a77253423cbf.jpg);"></body>
-{% extends 'base.html' %}
+<body style="background-image: url(https://ftp.bmp.ovh/imgs/2021/07/ddc4a77253423cbf.jpg);">
+  {% extends 'base.html' %}
 
-{% block header %}
-<h1 class="text-center text-dark font-italic"><strong> {% block title %}Lastest Posts{% endblock %}</strong></h1>
-{% if g.user %}
-<a class="action btn btn-outline-dark btn-light" href="{{ url_for('blog.create') }}">New</a>
-{% endif %}
-{% endblock %}
-{% block content %}
-<div class="container bg-light">
-  <div class="row">
-    <div class="col-md-8 border border-dark">
-      <article class="post">
-        {% for post in posts %}
-        <header>
-          <div>
-            <h1><strong>Title: {{ post['title'] }}</strong></h1>
-            <div class="about ">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
-          </div>
-          {% if g.user['id'] == post['author_id'] %}
-          <a class="action text-dark" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
-          {% endif %}
-        </header>
-        <p class="body">{{ post['body'] }}</p>
-      </article>
-      {% if not loop.last %}
-      <hr>
-      {% endif %}
-      {% endfor %}
-    </div>
-    <aside class="col-md-4 blog-sidebar">
-      <div class="p-4 mb-3 bg-white text-dark rounded font-italic">
-        <h4><strong>May you have a good day!</strong></h4>
-        <p class="mb-0"> 你就像黑夜，拥有寂静和群星。</p>
-        <p></p>
-        <p class="mb-0">生活很苦，但是我们手里有糖。</p>
-        <p></p>
-        <p class="mb-0">一无所知的世界，走下去才有惊喜。</p>
-        <p></p>
-        <p class="mb-0">疲惫的生活里总要一些温柔的梦想。</p>
-        <p></p>
-        <p class="mb-0">来路无可眷恋，值得期待的只有远方。</p>
-        <p></p>
-        <p class="mb-0">如果能久别重逢，我希望你别来无恙。</p>
-        <p></p>
-        <p class="mb-0">来路无可眷恋，值得期待的只有远方。</p>
-        <p></p>
-        <p class="mb-0">人间一趟，积极向上，不念过往，不畏将来。</p>
-        <p></p>
-        <p class="mb-0">尽全力在不愉快的日子里搜刮生活藏下的所有温柔。</p>
-        <p></p>
-        <p class="mb-0">那就请再努力一点吧，为了相见的人，想得到的东西和想成为的自己。</p>
-        <p></p>
-      </div>
-    </aside><!-- /.blog-sidebar -->
-  </div>
+  {% block header %}
+  <h1 class="text-center text-dark font-italic"><strong> {% block title %}Lastest Posts{% endblock %}</strong></h1>
+  {% if g.user %}
+  {% endif %}
   {% endblock %}
-</div>
+  {% block content %}
+  <div class="container bg-light">
+    <div class="row">
+      <div class="col-md-8">
+        <article class="post">
+          <a class="action btn btn-outline-danger btn-light justify-content-end" href="{{ url_for('blog.create') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg"
+              viewBox="0 0 16 16">
+              <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
+            </svg>
+            <strong>记录此刻心情 New</strong>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+              viewBox="0 0 16 16">
+              <path
+                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+            </svg>
+          </a>
+          <p></p>
+          {% for post in posts %}
+          <div class=" border border-dark " style="border-radius:5px;">
+            <header>
+              <div>
+                <h1 class="text-dark"><strong>Title: {{ post['title'] }}</strong></h1>
+                <div class="about text-dark">By {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}
+                </div>
+              </div>
+            </header>
+            <p class="body">{{ post['body'] }}</p>
+            {% if g.user['id'] == post['author_id'] %}
+            <a class="btn btn-outline-dark btn-light justify-content-end"
+              href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+            {% endif %}
+          </div>
+        </article>
+        {% if not loop.last %}
+        <hr>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <aside class="col-md-4 blog-sidebar">
+        <div class="p-4 mb-3 bg-dark text-light rounded font-italic">
+          <h4><strong>May you have a good day!</strong></h4>
+          <p></p>
+          <p class="mb-0">你就像黑夜，拥有寂静和群星。</p>
+          <p></p>
+          <p class="mb-0">生活很苦，但是我们手里有糖。</p>
+          <p></p>
+          <p class="mb-0">一无所知的世界，走下去才有惊喜。</p>
+          <p></p>
+          <p class="mb-0">疲惫的生活里总要一些温柔的梦想。</p>
+          <p></p>
+          <p class="mb-0">来路无可眷恋，值得期待的只有远方。</p>
+          <p></p>
+          <p class="mb-0">如果能久别重逢，我希望你别来无恙。</p>
+          <p></p>
+          <p class="mb-0">人间一趟，积极向上，不念过往，不畏将来。</p>
+          <p></p>
+          <p class="mb-0">我想在这个世界上，虽然没有最美好的相遇，但却应该有为了相遇或者重逢，所做的最美好的努力。</p>
+          <p></p>
+          <p class="mb-0">慢慢成长，渐渐变好。</p>
+          <p></p>
+          <p class="mb-0">那就请再努力一点吧，为了相见的人，想得到的东西和想成为的自己。</p>
+          <p></p>
+        </div>
+      </aside><!-- /.blog-sidebar -->
+    </div>
+    {% endblock %}
+  </div>
 
 </body>
