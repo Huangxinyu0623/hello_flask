@@ -1,16 +1,21 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
+<title>{% block title %}{% endblock %} - MyBlog</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<nav>
-  <h1>Flaskr</h1>
-  <ul>
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--要注意版本，不然有些属性用不了-->
+<nav class="navbar bg-info navbar-dark">
+  <h1 class="font-italic text-light">MyBlog</h1>
+  <ul class="justify-content-end text-dark">
     {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
+    <li><span>{{ g.user['username'] }}</span>
+    <li class="btn btn-outline-info btn-light"><a class="text-dark" href="{{ url_for('auth.logout') }}">Log Out</a>
+      {% else %}
+    <li class="btn btn-outline-info btn-light"><a class="text-dark" href="{{ url_for('auth.register') }}">Register</a>
+    <li class="btn btn-outline-info btn-light"><a class="text-dark" href="{{ url_for('auth.login') }}">Log In</a>
+      {% endif %}
   </ul>
 </nav>
 <section class="content">
@@ -18,7 +23,8 @@
     {% block header %}{% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+  <div class="flash">{{ message }}</div>
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
+<nav class="col-md-12 navbar bg-info navbar-dark"><a class="justify-content-end text-light" href="/">回到首页</a></nav>
