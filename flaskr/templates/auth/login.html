@@ -1,15 +1,41 @@
-{% extends 'base.html' %}
+<head>
+  <style>
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+      display: -md-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
 
-{% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
+  </style>
+</head>
 
-{% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-  </form>
-{% endblock %}
+<body style="background-image: url(https://ftp.bmp.ovh/imgs/2021/07/480fb655d39a7655.jpg);">
+  {% extends 'base.html' %}
+
+  {% block header %}
+  <h1 class="justify-content-center text-dark">{% block title %}Welcome to MyBlog!{% endblock %}</h1>
+  {% endblock %}
+
+  {% block content %}
+  <div class="container col-md-4" style="background-image: url();">
+    <form class=" bg-light text-center form-signin justify-content-center">
+      <h3><strong>Please Log In</strong></h3>
+      <hr>
+      <label for="username">Username</label>
+      <input name="username" id="username" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+      <input class="btn btn-outline-dark btn-light" type="submit" value="Log In">
+      <a class=" btn btn-outline-dark btn-light" href="{{ url_for('auth.register') }}">Don't have an account?</a>
+    </form>
+  </div>
+
+  {% endblock %}
+</body>

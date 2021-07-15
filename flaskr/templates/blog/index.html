@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-md-8">
         <article class="post">
-          <a class="action btn btn-outline-danger btn-light justify-content-end" href="{{ url_for('blog.create') }}">
+          <a class="action btn btn-outline-danger btn-light" href="{{ url_for('blog.create') }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg"
               viewBox="0 0 16 16">
               <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
@@ -23,17 +23,18 @@
                 d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
             </svg>
           </a>
+          <hr>
           <p></p>
           {% for post in posts %}
           <div class=" border border-dark " style="border-radius:5px;">
             <header>
               <div>
-                <h1 class="text-dark"><strong>Title: {{ post['title'] }}</strong></h1>
-                <div class="about text-dark">By {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}
-                </div>
+                <h3 class="text-dark"><strong>Title: {{ post['title'] }}</strong></h3>
+                <h4 class="text-dark">By {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</h4>
               </div>
             </header>
-            <p class="body">{{ post['body'] }}</p>
+            <h4 class="text-dark"><strong>Content: </strong></h4>
+            <p class="body font-italic">{{ post['body'] }}</p>
             {% if g.user['id'] == post['author_id'] %}
             <a class="btn btn-outline-dark btn-light justify-content-end"
               href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
