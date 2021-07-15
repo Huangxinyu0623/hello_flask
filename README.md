@@ -23,7 +23,7 @@
 #### 用户登录
 ![Log In](/assets/images/show4.png)
 #### 编辑博客内容
-![home](/assets/images/show5.png)
+![Edit](/assets/images/show5.png)
 
 ### 5.Gitpod打开本项目步骤
 #### （1）pip install flask  
@@ -32,5 +32,8 @@
 #### （4）pip install waitress
 #### （5）waitress-serve --call 'flaskr:create_app'
 #### （6）open browser
+#### PS: Gitpod中记得用本项目的GitHub地址，同时关于本项目更多打开方式，也可在本项目的/flaskr/templates/blog/index.html文件的最后找到。
+
+### 期待各位看官的Star与Fork！！！
 ### END.
 
