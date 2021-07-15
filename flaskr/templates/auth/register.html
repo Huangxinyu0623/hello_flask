@@ -1,13 +1,31 @@
-<body>
+<head>
+  <style>
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+      display: -md-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+
+  </style>
+</head>
+<body style="background-image:url(https://ftp.bmp.ovh/imgs/2021/07/005a99a4874eabad.jpg);">
   {% extends 'base.html' %}
 
   {% block header %}
-  <h1>{% block title %}Register{% endblock %}</h1>
+  <h1>{% block title %}Let's create your own account!{% endblock %}</h1>
   {% endblock %}
 
   {% block content %}
-  <div class="container bg-light">
-    <form method="post">
+  <div class="container col-md-4">
+    <form class=" bg-light text-center form-signin justify-content-center"  style="border-radius: 30px;">
+      <h3><strong>Sign Up</strong></h3>
       <label for="username">Username</label>
       <input name="username" id="username" required>
       <label for="password">Password</label>
