@@ -1,10 +1,13 @@
 <!doctype html>
 <title>{% block title %} MyBlog{% endblock %}</title>
+
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <!--要注意版本，不然有些属性用不了-->
 <nav class="navbar bg-dark navbar-dark">
   <h1 class="font-italic text-light">MyBlog--Record Every Good Moment!</h1>
