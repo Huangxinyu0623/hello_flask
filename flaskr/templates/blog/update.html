@@ -6,7 +6,7 @@
   {% endblock %}
 
   {% block content %}
-  <div class="container bg-light">
+  <div class="container col-md-8 bg-light">
     <form method="post">
       <label for="title">Title</label>
       <input name="title" id="title" value="{{ request.form['title'] or post['title'] }}" required>
